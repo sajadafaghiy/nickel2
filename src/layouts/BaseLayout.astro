@@ -15,6 +15,14 @@ const {
 const books = (await getCollection('books', ({ data }) => !data.draft))
   .sort((a, b) => a.data.title.localeCompare(b.data.title, 'fa'));
 const currentPath = Astro.url.pathname;
+
+const searchableText = (book: (typeof books)[number]) => [
+  book.data.title,
+  book.data.author,
+  book.data.category,
+  book.data.description,
+  book.body,
+].join(' ');
 ---
 
 <!doctype html>
@@ -34,7 +42,17 @@ const currentPath = Astro.url.pathname;
           <span class="brand-mark" aria-hidden="true">خ</span>
           <span>خلاصه‌خانه</span>
         </a>
-        <span class="header-note">کتاب‌های خوب، در زمانی کوتاه</span>
+        <div class="header-search">
+          <label class="search-field">
+            <span class="sr-only">جست‌وجو در همهٔ متن کتاب‌ها</span>
+            <span aria-hidden="true">⌕</span>
+            <input id="book-search" type="search" placeholder="جست‌وجو در کتاب‌ها…" autocomplete="off" aria-controls="search-results" />
+          </label>
+          <div class="search-results" id="search-results" hidden>
+            <p class="search-status" id="search-status"></p>
+            <ul id="search-result-list"></ul>
+          </div>
+        </div>
       </div>
     </header>
     <div class="site-body">
@@ -42,11 +60,11 @@ const currentPath = Astro.url.pathname;
         <nav aria-label="فهرست کتاب‌ها">
           <p class="sidebar-title">فهرست کتاب‌ها</p>
           <a class="sidebar-home" href={import.meta.env.BASE_URL}>همهٔ خلاصه‌ها</a>
-          <ul class="sidebar-list">
+          <ul class="sidebar-list" id="book-list">
             {books.map((book) => {
               const href = `${import.meta.env.BASE_URL}books/${book.id}/`;
               return (
-                <li>
+                <li data-search={searchableText(book)} data-title={book.data.title} data-author={book.data.author} data-href={href}>
                   <a href={href} aria-current={currentPath === href ? 'page' : undefined}>
                     <span>{book.data.title}</span>
                     <small>{book.data.author}</small>
@@ -62,5 +80,70 @@ const currentPath = Astro.url.pathname;
     <footer class="site-footer">
       <div class="container">با علاقه به کتاب و یادگیری ساخته شده است.</div>
     </footer>
+    <script>
+      const input = document.querySelector<HTMLInputElement>('#book-search');
+      const items = [...document.querySelectorAll<HTMLElement>('#book-list > li')];
+      const results = document.querySelector<HTMLElement>('#search-results');
+      const resultList = document.querySelector<HTMLUListElement>('#search-result-list');
+      const status = document.querySelector<HTMLElement>('#search-status');
+
+      const normalize = (value: string) => value
+        .toLocaleLowerCase('fa')
+        .replace(/[يى]/g, 'ی')
+        .replace(/ك/g, 'ک')
+        .replace(/[\u064B-\u065F\u0670]/g, '')
+        .trim();
+
+      const plainText = (value: string) => value
+        .replace(/^---[\s\S]*?---/, '')
+        .replace(/[#>*_`[\]()!-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const makePreview = (text: string, query: string) => {
+        const clean = plainText(text);
+        const index = normalize(clean).indexOf(query);
+        if (index < 0) return clean.slice(0, 130);
+        const start = Math.max(0, index - 55);
+        const end = Math.min(clean.length, index + query.length + 85);
+        return `${start ? '…' : ''}${clean.slice(start, end)}${end < clean.length ? '…' : ''}`;
+      };
+
+      input?.addEventListener('input', () => {
+        const query = normalize(input.value);
+        if (!results || !resultList || !status) return;
+        resultList.replaceChildren();
+
+        if (!query) {
+          results.hidden = true;
+          return;
+        }
+
+        const matches = items.filter((item) => normalize(item.dataset.search ?? '').includes(query));
+        status.textContent = matches.length ? `${matches.length.toLocaleString('fa-IR')} نتیجه` : 'نتیجه‌ای پیدا نشد.';
+
+        for (const item of matches) {
+          const link = document.createElement('a');
+          const title = document.createElement('strong');
+          const author = document.createElement('small');
+          const preview = document.createElement('p');
+          const listItem = document.createElement('li');
+          link.href = item.dataset.href ?? '#';
+          title.textContent = item.dataset.title ?? '';
+          author.textContent = item.dataset.author ?? '';
+          preview.textContent = makePreview(item.dataset.search ?? '', query);
+          link.append(title, author, preview);
+          listItem.append(link);
+          resultList.append(listItem);
+        }
+        results.hidden = false;
+      });
+
+      document.addEventListener('click', (event) => {
+        if (results && !event.composedPath().some((node) => node instanceof Element && node.closest?.('.header-search'))) {
+          results.hidden = true;
+        }
+      });
+    </script>
   </body>
 </html>
