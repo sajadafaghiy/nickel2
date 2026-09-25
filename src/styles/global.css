@@ -39,15 +39,22 @@ button, input { font: inherit; }
 .search-results strong { font-size: .9rem; }
 .search-results small { color: var(--gold); font-size: .72rem; }
 .search-results p { margin: .3rem 0 0; color: var(--muted); font-size: .75rem; line-height: 1.7; }
-.site-body { width: min(1440px, 100%); margin-inline: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.site-body { width: min(1440px, 100%); margin-inline: auto; display: grid; grid-template-columns: 260px minmax(0, 1fr); }
 .site-main { min-width: 0; }
-.sidebar { padding: 2.2rem 1rem; border-left: 1px solid var(--line); }
+.sidebar { padding: 1.5rem 1rem; border-left: 1px solid var(--line); }
 .sidebar nav { position: sticky; top: 105px; }
-.sidebar-title { margin: 0 0 .8rem; padding-inline: .75rem; color: var(--muted); font-size: .78rem; font-weight: 800; letter-spacing: .02em; }
-.sidebar-home { display: block; margin-bottom: .7rem; padding: .6rem .75rem; border-radius: 10px; color: var(--green); font-size: .86rem; font-weight: 700; }
-.sidebar-home:hover { background: var(--green-soft); }
-.sidebar-list { display: grid; gap: .3rem; margin: 0; padding: 0; list-style: none; }
-.sidebar-list a { display: grid; padding: .7rem .75rem; border-radius: 11px; line-height: 1.5; transition: background .2s ease, color .2s ease; }
+.books-menu { position: relative; }
+.books-menu summary { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .8rem .9rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 7px 22px rgba(39, 55, 45, .06); cursor: pointer; font-size: .92rem; font-weight: 800; list-style: none; transition: border-color .2s ease, box-shadow .2s ease; }
+.books-menu summary::-webkit-details-marker { display: none; }
+.books-menu summary:hover, .books-menu summary:focus-visible { border-color: #adc1b5; box-shadow: 0 8px 24px rgba(39, 55, 45, .1); outline: none; }
+.books-menu-label, .books-menu-meta { display: flex; align-items: center; gap: .55rem; }
+.books-menu-icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; color: #fff; background: var(--green); font-size: .72rem; }
+.books-menu-meta small { display: grid; place-items: center; min-width: 25px; height: 23px; padding-inline: .35rem; border-radius: 20px; color: var(--green); background: var(--green-soft); font-size: .68rem; }
+.books-menu-chevron { color: var(--muted); transition: transform .2s ease; }
+.books-menu[open] .books-menu-chevron { transform: rotate(180deg); }
+.books-menu-panel { margin-top: .55rem; padding: .4rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: var(--shadow); }
+.sidebar-list { display: grid; gap: .2rem; max-height: calc(100vh - 210px); margin: 0; padding: 0 .2rem 0 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #b7c7be transparent; list-style: none; }
+.sidebar-list a { display: grid; padding: .65rem .7rem; border-radius: 10px; line-height: 1.5; transition: background .2s ease, color .2s ease; }
 .sidebar-list a:hover, .sidebar-list a[aria-current='page'] { color: var(--green); background: var(--green-soft); }
 .sidebar-list span { font-size: .88rem; font-weight: 700; }
 .sidebar-list small { margin-top: .2rem; color: var(--muted); font-size: .7rem; }
@@ -95,13 +102,11 @@ h1 { margin: .8rem 0 1.2rem; font-size: clamp(2.7rem, 7vw, 5.8rem); line-height:
 
 @media (max-width: 800px) {
   .site-body { display: block; }
-  .sidebar { padding: .8rem 1rem; border-left: 0; border-bottom: 1px solid var(--line); overflow-x: auto; }
-  .sidebar nav { position: static; display: flex; align-items: center; gap: .4rem; width: max-content; }
-  .sidebar-title { margin: 0; padding: 0 .25rem; }
-  .sidebar-home { margin: 0; white-space: nowrap; }
-  .sidebar-list { display: flex; }
-  .sidebar-list a { min-width: max-content; padding: .5rem .7rem; }
-  .sidebar-list small { display: none; }
+  .sidebar { position: relative; z-index: 5; padding: .7rem 1rem; border-left: 0; border-bottom: 1px solid var(--line); background: var(--paper); }
+  .sidebar nav { position: static; }
+  .books-menu summary { padding: .65rem .8rem; }
+  .books-menu-panel { position: absolute; top: calc(100% + .45rem); right: 0; left: 0; margin-top: 0; }
+  .sidebar-list { max-height: min(55vh, 430px); }
   .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
   .hero-art { width: 150px; height: 185px; justify-self: end; margin-left: 2rem; }
   .book-shape::after { font-size: 1rem; padding: 1rem .7rem; }

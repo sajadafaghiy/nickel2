@@ -58,21 +58,33 @@ const searchableText = (book: (typeof books)[number]) => [
     <div class="site-body">
       <aside class="sidebar">
         <nav aria-label="فهرست کتاب‌ها">
-          <p class="sidebar-title">فهرست کتاب‌ها</p>
-          <a class="sidebar-home" href={import.meta.env.BASE_URL}>همهٔ خلاصه‌ها</a>
-          <ul class="sidebar-list" id="book-list">
-            {books.map((book) => {
-              const href = `${import.meta.env.BASE_URL}books/${book.id}/`;
-              return (
-                <li data-search={searchableText(book)} data-title={book.data.title} data-author={book.data.author} data-href={href}>
-                  <a href={href} aria-current={currentPath === href ? 'page' : undefined}>
-                    <span>{book.data.title}</span>
-                    <small>{book.data.author}</small>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          <details class="books-menu">
+            <summary>
+              <span class="books-menu-label">
+                <span class="books-menu-icon" aria-hidden="true">☰</span>
+                <span>کتاب‌ها</span>
+              </span>
+              <span class="books-menu-meta">
+                <small>{books.length.toLocaleString('fa-IR')}</small>
+                <span class="books-menu-chevron" aria-hidden="true">⌄</span>
+              </span>
+            </summary>
+            <div class="books-menu-panel">
+              <ul class="sidebar-list" id="book-list">
+                {books.map((book) => {
+                  const href = `${import.meta.env.BASE_URL}books/${book.id}/`;
+                  return (
+                    <li data-search={searchableText(book)} data-title={book.data.title} data-author={book.data.author} data-href={href}>
+                      <a href={href} aria-current={currentPath === href ? 'page' : undefined}>
+                        <span>{book.data.title}</span>
+                        <small>{book.data.author}</small>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </details>
         </nav>
       </aside>
       <main class="site-main"><slot /></main>
