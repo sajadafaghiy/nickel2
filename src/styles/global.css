@@ -27,6 +27,18 @@ button, input { font: inherit; }
 .brand { display: flex; align-items: center; gap: .7rem; font-weight: 800; font-size: 1.15rem; }
 .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: #fff; background: var(--green); box-shadow: 0 7px 20px rgba(23,76,60,.2); }
 .header-note { color: var(--muted); font-size: .88rem; }
+.site-body { width: min(1440px, 100%); margin-inline: auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.site-main { min-width: 0; }
+.sidebar { padding: 2.2rem 1rem; border-left: 1px solid var(--line); }
+.sidebar nav { position: sticky; top: 105px; }
+.sidebar-title { margin: 0 0 .8rem; padding-inline: .75rem; color: var(--muted); font-size: .78rem; font-weight: 800; letter-spacing: .02em; }
+.sidebar-home { display: block; margin-bottom: .7rem; padding: .6rem .75rem; border-radius: 10px; color: var(--green); font-size: .86rem; font-weight: 700; }
+.sidebar-home:hover { background: var(--green-soft); }
+.sidebar-list { display: grid; gap: .3rem; margin: 0; padding: 0; list-style: none; }
+.sidebar-list a { display: grid; padding: .7rem .75rem; border-radius: 11px; line-height: 1.5; transition: background .2s ease, color .2s ease; }
+.sidebar-list a:hover, .sidebar-list a[aria-current='page'] { color: var(--green); background: var(--green-soft); }
+.sidebar-list span { font-size: .88rem; font-weight: 700; }
+.sidebar-list small { margin-top: .2rem; color: var(--muted); font-size: .7rem; }
 
 .hero { padding: clamp(4.5rem, 10vw, 8rem) 0 3.5rem; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; width: 370px; height: 370px; border-radius: 50%; background: #e9d8a8; opacity: .35; filter: blur(2px); inset: -150px auto auto -100px; }
@@ -70,6 +82,14 @@ h1 { margin: .8rem 0 1.2rem; font-size: clamp(2.7rem, 7vw, 5.8rem); line-height:
 .site-footer { padding: 2rem 0; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: .85rem; }
 
 @media (max-width: 800px) {
+  .site-body { display: block; }
+  .sidebar { padding: .8rem 1rem; border-left: 0; border-bottom: 1px solid var(--line); overflow-x: auto; }
+  .sidebar nav { position: static; display: flex; align-items: center; gap: .4rem; width: max-content; }
+  .sidebar-title { margin: 0; padding: 0 .25rem; }
+  .sidebar-home { margin: 0; white-space: nowrap; }
+  .sidebar-list { display: flex; }
+  .sidebar-list a { min-width: max-content; padding: .5rem .7rem; }
+  .sidebar-list small { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
   .hero-art { width: 150px; height: 185px; justify-self: end; margin-left: 2rem; }
   .book-shape::after { font-size: 1rem; padding: 1rem .7rem; }
