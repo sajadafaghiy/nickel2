@@ -1,6 +1,12 @@
 ---
+title: «اثر مرکب»
+author: دارن هاردی
+description: توضیح اینکه چگونه انتخاب‌ها و عادت‌های کوچک با تکرار مداوم به نتایج بزرگ تبدیل می‌شوند.
+publishedAt: 2026-09-25
+readingTime: ۸ دقیقه
+category: رشد فردی
+featured: true
 draft: false
-slug: compound-effect
 tags:
   - بهره‌وری
   - مدیریت زمان

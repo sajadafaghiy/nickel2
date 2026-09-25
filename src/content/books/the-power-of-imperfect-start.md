@@ -1,6 +1,12 @@
 ---
+title: «قدرت شروع ناقص»
+author: جیمز کلیر
+description: راهنمای غلبه بر کمال‌گرایی و اهمال‌کاری با شروع کردن، استمرار و اصلاح تدریجی مسیر.
+publishedAt: 2026-09-25
+readingTime: ۱۶ دقیقه
+category: رشد فردی
+featured: true
 draft: false
-slug: the-power-of-imperfect-start
 tags:
 ---
 

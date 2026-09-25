@@ -1,6 +1,12 @@
 ---
+title: «بازیکن تیمی ایده‌آل»
+author: پاتریک لنچیونی
+description: مدلی ساده برای شناسایی و پرورش اعضای فروتن، باانگیزه و هوشمند در تیم‌های کاری.
+publishedAt: 2026-09-25
+readingTime: ۷ دقیقه
+category: مدیریت تیم
+featured: true
 draft: false
-slug: the-ideal-team-player
 tags:
   - بهره‌وری
   - مدیریت

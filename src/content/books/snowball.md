@@ -1,6 +1,12 @@
 ---
+title: «گلولهٔ برفی»
+author: آلیس شرودر
+description: زندگی‌نامهٔ جامع وارن بافت و روایت شکل‌گیری شخصیت، اصول و مسیر سرمایه‌گذاری او.
+publishedAt: 2026-09-25
+readingTime: ۹ دقیقه
+category: زندگی‌نامه
+featured: true
 draft: false
-slug: snowball
 tags:
 ---
 

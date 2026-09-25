@@ -1,6 +1,12 @@
 ---
+title: «از غروب تا سپیده‌دم»
+author: آن لاموت
+description: تأملاتی صمیمی دربارهٔ امید، پذیرش خود و یافتن معنا در میان آشوب و دشواری‌های زندگی.
+publishedAt: 2026-09-25
+readingTime: ۸ دقیقه
+category: خودشناسی
+featured: true
 draft: false
-slug: dusk-night-dawn
 tags:
 ---
 

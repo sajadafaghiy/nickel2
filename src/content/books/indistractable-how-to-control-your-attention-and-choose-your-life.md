@@ -1,6 +1,12 @@
 ---
+title: «ذهن حواس‌جمع»
+author: نیر ایال
+description: چارچوبی عملی برای شناخت محرک‌های حواس‌پرتی، کنترل توجه و انتخاب آگاهانه‌تر زندگی.
+publishedAt: 2026-09-25
+readingTime: ۶ دقیقه
+category: بهره‌وری
+featured: true
 draft: false
-slug: indistractable
 tags:
   - بهره‌وری
   - توسعه فردی

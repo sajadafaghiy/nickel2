@@ -1,6 +1,12 @@
 ---
+title: «حافظهٔ نامحدود»
+author: کوین هورسلی
+description: تکنیک‌هایی عملی برای افزایش تمرکز، یادگیری سریع‌تر و به‌خاطر سپردن پایدار اطلاعات.
+publishedAt: 2026-09-25
+readingTime: ۵ دقیقه
+category: یادگیری
+featured: true
 draft: false
-slug: unlimited-memory
 tags:
   - بهره‌وری
   - توسعه فردی

@@ -1,6 +1,12 @@
 ---
+title: «رهبری»
+author: الکس فرگوسن و مایکل موریتز
+description: درس‌های مدیریتی الکس فرگوسن دربارهٔ ساخت تیم، حفظ استانداردها و دستیابی به موفقیت پایدار.
+publishedAt: 2026-09-25
+readingTime: ۶ دقیقه
+category: رهبری
+featured: true
 draft: false
-slug: leading
 tags:
   - مدیریت
   - رهبری

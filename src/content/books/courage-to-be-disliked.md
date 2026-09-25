@@ -1,6 +1,12 @@
 ---
+title: «شجاعت دوست‌داشتنی نبودن»
+author: ایچیرو کیشیمی و فومیتاکه کوگا
+description: گفت‌وگویی فلسفی بر پایهٔ روان‌شناسی آدلر دربارهٔ آزادی، مسئولیت و رهایی از تأیید دیگران.
+publishedAt: 2026-09-25
+readingTime: ۷ دقیقه
+category: روان‌شناسی
+featured: true
 draft: false
-slug: courage-to-be-disliked
 tags:
 ---
 

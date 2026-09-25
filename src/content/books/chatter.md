@@ -1,6 +1,12 @@
 ---
+title: «نشخوار ذهنی»
+author: اتان کراس
+description: نگاهی علمی به گفت‌وگوی درونی و ابزارهایی برای مهار افکار منفی و استفادهٔ سازنده از صدای ذهن.
+publishedAt: 2026-09-25
+readingTime: ۶ دقیقه
+category: روان‌شناسی
+featured: true
 draft: false
-slug: chatter
 tags:
   - خودآگاهی
   - خوشبختی 

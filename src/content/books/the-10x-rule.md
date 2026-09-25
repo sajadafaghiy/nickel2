@@ -1,6 +1,12 @@
 ---
+title: «قانون ۱۰ برابر»
+author: گرنت کاردون
+description: رویکردی پرانرژی به هدف‌گذاری بزرگ، مسئولیت‌پذیری و اقدام گسترده برای دستیابی به موفقیت.
+publishedAt: 2026-09-25
+readingTime: ۶ دقیقه
+category: موفقیت
+featured: true
 draft: false
-slug: 10x-rule
 tags:
   - بهره‌وری
 ---

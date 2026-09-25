@@ -1,19 +1,15 @@
 ---
+title: «عادت‌های اتمی»
+author: جیمز کلیر
+description: راهنمایی عملی برای ساخت عادت‌های خوب، ترک عادت‌های بد و ایجاد تغییرات کوچک اما ماندگار.
+publishedAt: 2026-09-25
+readingTime: ۸ دقیقه
+category: رشد فردی
+featured: true
 draft: false
-slug: atomic-habits
 tags:
   - بهره‌وری
   - مدیرت زمان
----
-
----
-title: «شازده کوچولو»
-author: آنتوان دو سنت‌اگزوپری
-description: روایتی شاعرانه دربارهٔ دوستی، عشق، تنهایی و حقیقت‌هایی که تنها با دل می‌توان دید.
-publishedAt: 2026-09-12
-readingTime: ۶ دقیقه
-category: داستان
-featured: true
 ---
 
 # ⚛️ عادت‌های اتمی
