@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const getStaticPaths = (async () => {
+  const books = await getCollection('books', ({ data }) => !data.draft);
+  return books.map((book) => ({ params: { id: book.id }, props: { book } }));
+}) satisfies GetStaticPaths;
+
+const { book } = Astro.props;
+const { Content } = await render(book);
+const formatter = new Intl.DateTimeFormat('fa-IR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout title={`${book.data.title} | خلاصه‌خانه`} description={book.data.description}>
+  <article class="article-shell">
+    <a class="back-link" href={import.meta.env.BASE_URL}>→ بازگشت به همهٔ خلاصه‌ها</a>
+    <header class="article-header">
+      <span class="category">{book.data.category}</span>
+      <h1>{book.data.title}</h1>
+      <div class="article-meta">
+        <span>نویسنده: {book.data.author}</span>
+        <span>{book.data.readingTime} مطالعه</span>
+        <time datetime={book.data.publishedAt.toISOString()}>{formatter.format(book.data.publishedAt)}</time>
+      </div>
+    </header>
+    <div class="prose"><Content /></div>
+  </article>
+</BaseLayout>

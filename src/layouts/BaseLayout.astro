@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'خلاصه‌خانه | خلاصهٔ کتاب به فارسی',
+  description = 'خلاصه‌های کوتاه و خواندنی از کتاب‌های ارزشمند به زبان فارسی',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href={import.meta.env.BASE_URL} aria-label="صفحهٔ اصلی خلاصه‌خانه">
+          <span class="brand-mark" aria-hidden="true">خ</span>
+          <span>خلاصه‌خانه</span>
+        </a>
+        <span class="header-note">کتاب‌های خوب، در زمانی کوتاه</span>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="site-footer">
+      <div class="container">با علاقه به کتاب و یادگیری ساخته شده است.</div>
+    </footer>
+  </body>
+</html>
