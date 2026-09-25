@@ -33,25 +33,40 @@ const searchableText = (book: (typeof books)[number]) => [
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme === 'light' || savedTheme === 'dark'
+          ? savedTheme
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <title>{title}</title>
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href={import.meta.env.BASE_URL} aria-label="صفحهٔ اصلی خلاصه‌خانه">
-          <span class="brand-mark" aria-hidden="true">خ</span>
-          <span>خلاصه‌خانه</span>
+          <span class="brand-mark" aria-hidden="true">ن</span>
+          <span>نیکل</span>
         </a>
-        <div class="header-search">
-          <label class="search-field">
-            <span class="sr-only">جست‌وجو در همهٔ متن کتاب‌ها</span>
-            <span aria-hidden="true">⌕</span>
-            <input id="book-search" type="search" placeholder="جست‌وجو در کتاب‌ها…" autocomplete="off" aria-controls="search-results" />
-          </label>
-          <div class="search-results" id="search-results" hidden>
-            <p class="search-status" id="search-status"></p>
-            <ul id="search-result-list"></ul>
+        <div class="header-actions">
+          <div class="header-search">
+            <label class="search-field">
+              <span class="sr-only">جست‌وجو در همهٔ متن کتاب‌ها</span>
+              <span aria-hidden="true">⌕</span>
+              <input id="book-search" type="search" placeholder="جست‌وجو در کتاب‌ها…" autocomplete="off" aria-controls="search-results" />
+            </label>
+            <div class="search-results" id="search-results" hidden>
+              <p class="search-status" id="search-status"></p>
+              <ul id="search-result-list"></ul>
+            </div>
           </div>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="فعال‌کردن حالت تیره" title="تغییر پوسته">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path></svg>
+          </button>
         </div>
       </div>
     </header>
@@ -66,7 +81,11 @@ const searchableText = (book: (typeof books)[number]) => [
               </span>
               <span class="books-menu-meta">
                 <small>{books.length.toLocaleString('fa-IR')}</small>
-                <span class="books-menu-chevron" aria-hidden="true">⌄</span>x
+                <span class="books-menu-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="m7 10 5 5 5-5"></path>
+                  </svg>
+                </span>
               </span>
             </summary>
             <div class="books-menu-panel">
@@ -93,11 +112,27 @@ const searchableText = (book: (typeof books)[number]) => [
       <div class="container">با علاقه به کتاب و یادگیری ساخته شده است.</div>
     </footer>
     <script>
+      const themeToggle = document.querySelector<HTMLButtonElement>('#theme-toggle');
       const input = document.querySelector<HTMLInputElement>('#book-search');
       const items = [...document.querySelectorAll<HTMLElement>('#book-list > li')];
       const results = document.querySelector<HTMLElement>('#search-results');
       const resultList = document.querySelector<HTMLUListElement>('#search-result-list');
       const status = document.querySelector<HTMLElement>('#search-status');
+
+      const updateThemeButton = () => {
+        if (!themeToggle) return;
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        themeToggle.setAttribute('aria-label', isDark ? 'فعال‌کردن حالت روشن' : 'فعال‌کردن حالت تیره');
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+      };
+
+      updateThemeButton();
+      themeToggle?.addEventListener('click', () => {
+        const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = nextTheme;
+        localStorage.setItem('theme', nextTheme);
+        updateThemeButton();
+      });
 
       const normalize = (value: string) => value
         .toLocaleLowerCase('fa')
