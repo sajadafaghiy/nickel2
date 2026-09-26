@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const getStaticPaths = (async () => {
+  const books = await getCollection('books', ({ data }) => !data.draft);
+  const categories = [...new Set(books.map((book) => book.data.category))];
+
+  return categories.map((category) => ({ params: { category }, props: { category } }));
+}) satisfies GetStaticPaths;
+
+const { category } = Astro.props;
+const books = (await getCollection('books', ({ data }) => !data.draft && data.category === category))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const formatter = new Intl.DateTimeFormat('fa-IR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout title={`${category} | نیکل`} description={`همهٔ خلاصه‌کتاب‌های دستهٔ ${category}`}>
+  <header class="category-header">
+    <div class="container">
+      <a class="back-link" href={import.meta.env.BASE_URL}>→ بازگشت به همهٔ خلاصه‌ها</a>
+      <span class="eyebrow">دسته‌بندی</span>
+      <h1>{category}</h1>
+      <p>{books.length.toLocaleString('fa-IR')} کتاب در این دسته</p>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="category-books-heading">
+    <div class="container">
+      <h2 class="sr-only" id="category-books-heading">کتاب‌های دستهٔ {category}</h2>
+      <div class="books-grid">
+        {books.map((book) => (
+          <article class="book-card">
+            <div class="card-top">
+              <span class="category">{book.data.category}</span>
+              <time class="date" datetime={book.data.publishedAt.toISOString()}>{formatter.format(book.data.publishedAt)}</time>
+            </div>
+            <h3><a href={`${import.meta.env.BASE_URL}books/${book.id}/`}>{book.data.title}</a></h3>
+            <span class="author">{book.data.author}</span>
+            <p class="description">{book.data.description}</p>
+            <div class="card-footer">
+              <span>{book.data.readingTime} مطالعه</span>
+              <a class="read-more" href={`${import.meta.env.BASE_URL}books/${book.id}/`}>مطالعهٔ خلاصه ←</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

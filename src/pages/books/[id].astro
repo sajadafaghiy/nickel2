@@ -11,13 +11,14 @@ export const getStaticPaths = (async () => {
 const { book } = Astro.props;
 const { Content } = await render(book);
 const formatter = new Intl.DateTimeFormat('fa-IR', { day: 'numeric', month: 'long', year: 'numeric' });
+const categoryHref = `${import.meta.env.BASE_URL}categories/${encodeURIComponent(book.data.category)}/`;
 ---
 
 <BaseLayout title={`${book.data.title} | نیکل`} description={book.data.description}>
   <article class="article-shell">
     <a class="back-link" href={import.meta.env.BASE_URL}>→ بازگشت به همهٔ خلاصه‌ها</a>
     <header class="article-header">
-      <span class="category">{book.data.category}</span>
+      <a class="category" href={categoryHref}>{book.data.category}</a>
       <h1>{book.data.title}</h1>
       <div class="article-meta">
         <span>نویسنده: {book.data.author}</span>
