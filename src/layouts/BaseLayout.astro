@@ -88,6 +88,7 @@ const searchableText = (book: (typeof books)[number]) => [
                 </span>
               </span>
             </summary>
+            <button class="books-menu-backdrop" type="button" aria-label="بستن فهرست کتاب‌ها"></button>
             <div class="books-menu-panel">
               <ul class="sidebar-list" id="book-list">
                 {books.map((book) => {
@@ -113,6 +114,8 @@ const searchableText = (book: (typeof books)[number]) => [
     </footer>
     <script>
       const themeToggle = document.querySelector<HTMLButtonElement>('#theme-toggle');
+      const booksMenu = document.querySelector<HTMLDetailsElement>('.books-menu');
+      const booksMenuBackdrop = document.querySelector<HTMLButtonElement>('.books-menu-backdrop');
       const input = document.querySelector<HTMLInputElement>('#book-search');
       const items = [...document.querySelectorAll<HTMLElement>('#book-list > li')];
       const results = document.querySelector<HTMLElement>('#search-results');
@@ -132,6 +135,17 @@ const searchableText = (book: (typeof books)[number]) => [
         document.documentElement.dataset.theme = nextTheme;
         localStorage.setItem('theme', nextTheme);
         updateThemeButton();
+      });
+
+      booksMenuBackdrop?.addEventListener('click', () => {
+        if (booksMenu) booksMenu.open = false;
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && booksMenu?.open) {
+          booksMenu.open = false;
+          booksMenu.querySelector<HTMLElement>('summary')?.focus();
+        }
       });
 
       const normalize = (value: string) => value

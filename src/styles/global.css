@@ -77,7 +77,7 @@ button, input { font: inherit; }
 .sidebar { padding: 1.5rem 1rem; border-left: 1px solid var(--line); }
 .sidebar nav { position: sticky; top: 105px; }
 .books-menu { position: relative; }
-.books-menu summary { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .8rem .9rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 7px 22px rgba(39, 55, 45, .06); cursor: pointer; font-size: .92rem; font-weight: 800; list-style: none; transition: border-color .2s ease, box-shadow .2s ease; }
+.books-menu summary { position: relative; z-index: 12; display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .8rem .9rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 7px 22px rgba(39, 55, 45, .06); cursor: pointer; font-size: .92rem; font-weight: 800; list-style: none; transition: border-color .2s ease, box-shadow .2s ease; }
 .books-menu summary::-webkit-details-marker { display: none; }
 .books-menu summary:hover, .books-menu summary:focus-visible { border-color: #adc1b5; box-shadow: 0 8px 24px rgba(39, 55, 45, .1); outline: none; }
 .books-menu-label, .books-menu-meta { display: flex; align-items: center; gap: .55rem; }
@@ -87,7 +87,9 @@ button, input { font: inherit; }
 .books-menu-chevron svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
 .books-menu summary:hover .books-menu-chevron { color: var(--green); background: var(--green-soft); }
 .books-menu[open] .books-menu-chevron svg { transform: scaleY(-1); }
-.books-menu-panel { margin-top: .55rem; padding: .4rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: var(--shadow); }
+.books-menu-backdrop { position: fixed; z-index: 10; inset: 0; display: none; width: 100%; height: 100%; padding: 0; border: 0; background: rgba(8, 16, 12, .28); backdrop-filter: blur(1px); cursor: default; }
+.books-menu[open] .books-menu-backdrop { display: block; }
+.books-menu-panel { position: relative; z-index: 11; margin-top: .55rem; padding: .4rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: var(--shadow); }
 .sidebar-list { display: grid; gap: .2rem; max-height: calc(100vh - 210px); margin: 0; padding: 0 .2rem 0 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #b7c7be transparent; list-style: none; }
 .sidebar-list a { display: grid; padding: .65rem .7rem; border-radius: 10px; line-height: 1.5; transition: background .2s ease, color .2s ease; }
 .sidebar-list a:hover, .sidebar-list a[aria-current='page'] { color: var(--green); background: var(--green-soft); }
