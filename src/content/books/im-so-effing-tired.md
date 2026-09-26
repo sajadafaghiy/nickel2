@@ -4,7 +4,6 @@ author: امی شاه
 description: راهنمایی پزشکی و کاربردی برای شناخت علت خستگی و بازیابی انرژی با بهبود خواب، تغذیه و سبک زندگی.
 publishedAt: 2026-09-25
 readingTime: ۱۲ دقیقه
-category: سلامت
 featured: true
 draft: false
 tags:

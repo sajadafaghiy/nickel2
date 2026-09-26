@@ -4,7 +4,6 @@ author: پیتر تیل
 description: دیدگاهی متفاوت دربارهٔ نوآوری، ساخت انحصار خلاق و خلق کسب‌وکاری که چیزی کاملاً تازه می‌سازد.
 publishedAt: 2026-09-25
 readingTime: ۱۷ دقیقه
-category: کارآفرینی
 featured: true
 draft: false
 tags:

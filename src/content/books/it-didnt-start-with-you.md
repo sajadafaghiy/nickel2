@@ -4,7 +4,6 @@ author: مارک وولین
 description: بررسی تأثیر تروماهای بین‌نسلی بر زندگی و راه‌هایی برای شناخت و شکستن الگوهای به‌ارث‌رسیده.
 publishedAt: 2026-09-25
 readingTime: ۶ دقیقه
-category: روان‌شناسی
 featured: true
 draft: false
 tags:

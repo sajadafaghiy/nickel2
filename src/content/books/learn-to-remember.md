@@ -4,10 +4,10 @@ author: دومینیک اوبراین
 description: مجموعه‌ای از تکنیک‌های کاربردی قهرمان حافظه برای یادگیری سریع‌تر و به‌خاطر سپردن اطلاعات.
 publishedAt: 2026-09-25
 readingTime: ۵ دقیقه
-category: یادگیری
 featured: true
 draft: false
 tags:
+  - یادگیری
 ---
 
 # 📌 چگونه به یاد بیاوریم

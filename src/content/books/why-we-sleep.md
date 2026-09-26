@@ -4,7 +4,6 @@ author: متیو واکر
 description: توضیح علمی نقش حیاتی خواب در حافظه، یادگیری، سلامت جسم و روان و کیفیت زندگی.
 publishedAt: 2026-09-25
 readingTime: ۶ دقیقه
-category: سلامت
 featured: true
 draft: false
 tags:

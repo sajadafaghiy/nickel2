@@ -4,7 +4,6 @@ author: رولف دوبلی
 description: معرفی خطاهای شناختی رایج و راه‌هایی برای قضاوت دقیق‌تر در زندگی، کار و تصمیم‌های مالی.
 publishedAt: 2026-09-25
 readingTime: ۷ دقیقه
-category: تصمیم‌گیری
 featured: true
 draft: false
 tags:

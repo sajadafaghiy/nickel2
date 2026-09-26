@@ -4,7 +4,6 @@ author: مارک منسون
 description: نگاهی واقع‌گرایانه به انتخاب ارزش‌ها، پذیرش محدودیت‌ها و تمرکز بر چیزهایی که واقعاً اهمیت دارند.
 publishedAt: 2026-09-25
 readingTime: ۸ دقیقه
-category: رشد فردی
 featured: true
 draft: false
 tags:

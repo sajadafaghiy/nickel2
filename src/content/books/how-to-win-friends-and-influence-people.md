@@ -4,7 +4,6 @@ author: دیل کارنگی
 description: اصول ماندگار ارتباط مؤثر، جلب اعتماد، مدیریت اختلاف و تأثیرگذاری مثبت بر دیگران.
 publishedAt: 2026-09-25
 readingTime: ۶ دقیقه
-category: ارتباطات
 featured: true
 draft: false
 tags:

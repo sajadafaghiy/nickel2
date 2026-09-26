@@ -4,7 +4,6 @@ author: جیم کالینز
 description: پژوهشی مدیریتی دربارهٔ ویژگی‌هایی که شرکت‌های معمولی را به سازمان‌هایی عالی و پایدار تبدیل می‌کنند.
 publishedAt: 2026-09-25
 readingTime: ۸ دقیقه
-category: مدیریت
 featured: true
 draft: false
 tags:

@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname;
 const searchableText = (book: (typeof books)[number]) => [
   book.data.title,
   book.data.author,
-  book.data.category,
+  ...book.data.tags,
   book.data.description,
   book.body,
 ].join(' ');

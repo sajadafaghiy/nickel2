@@ -4,7 +4,6 @@ author: استفان کاوی
 description: هفت اصل بنیادین برای مسئولیت‌پذیری، اولویت‌بندی، روابط سازنده و رشد مستمر فردی.
 publishedAt: 2026-09-25
 readingTime: ۶ دقیقه
-category: رشد فردی
 featured: true
 draft: false
 tags:

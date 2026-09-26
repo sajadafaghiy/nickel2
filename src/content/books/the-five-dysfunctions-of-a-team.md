@@ -4,7 +4,6 @@ author: پاتریک لنچیونی
 description: معرفی پنج مانع اعتماد، تعارض، تعهد، پاسخ‌گویی و نتیجه‌گرایی که تیم‌ها را تضعیف می‌کنند.
 publishedAt: 2026-09-25
 readingTime: ۵ دقیقه
-category: مدیریت تیم
 featured: true
 draft: false
 tags:

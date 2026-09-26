@@ -4,7 +4,6 @@ author: اریک اشمیت و جاناتان روزنبرگ
 description: تجربه‌ها و اصول مدیریتی گوگل برای جذب افراد خلاق، نوآوری و ساخت سازمانی موفق.
 publishedAt: 2026-09-25
 readingTime: ۷ دقیقه
-category: مدیریت
 featured: true
 draft: false
 tags:
